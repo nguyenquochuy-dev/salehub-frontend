@@ -1,0 +1,790 @@
+/* 01. GLOBAL */
+body {
+  font-family: "Jost", sans-serif;
+}
+
+/* 02. UTILITY CLASSES */
+/* Letter-spacing */
+.ls-2 {
+  letter-spacing: 2px;
+}
+.ls-16 {
+  letter-spacing: 16px;
+}
+.ls-minus-2 {
+  letter-spacing: -2px;
+}
+
+/* Font-size — dùng px để pixel-perfect với thiết kế */
+.fs-110 {
+  font-size: 110px;
+  line-height: 0.85;
+} /* Hero heading lớn */
+.fs-38 {
+  font-size: 38px;
+}
+.fs-14 {
+  font-size: 14px;
+}
+.fs-13 {
+  font-size: 13px;
+}
+.fs-11 {
+  font-size: 11px;
+}
+
+/* Xóa ring xanh Bootstrap khi focus nút hamburger */
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* 03. HERO CAROUSEL */
+/* Chiều cao slide — override ở section 13 cho mobile */
+.hero-item {
+  height: 90vh;
+  min-height: 600px;
+}
+
+/* Luôn hiển thị phần trên ảnh (khuôn mặt model) */
+.img-top-center {
+  object-position: center top;
+}
+
+/* Khối text lệch trái tránh che model */
+.hero-content {
+  left: 8%;
+  max-width: 900px;
+}
+
+/* Nút CTA hero */
+.btn-shop-white {
+  letter-spacing: 1px;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+.btn-shop-white:hover {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+/* Indicator dots — canh trái, override Bootstrap default (center) */
+.carousel-indicators {
+  margin-bottom: 3rem;
+  align-items: center;
+}
+.carousel-indicators [data-bs-target] {
+  width: 35px;
+  height: 4px;
+  border: none;
+  background-color: #fff;
+  opacity: 0.5;
+  margin: 0 6px;
+  transition:
+    height 0.3s ease,
+    opacity 0.3s ease;
+}
+.carousel-indicators .active {
+  height: 10px;
+  opacity: 1;
+}
+
+/* 04. DENIM COLLECTION */
+/* Card chung */
+.banner-card {
+  background-color: #f8f9fa;
+  transition: all 0.4s ease;
+}
+.banner-card img {
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.banner-card:hover img {
+  transform: scale(1.04);
+}
+
+/* Gradient overlay — giúp text trắng luôn đọc được */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.1) 60%,
+    transparent 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Shop link với underline animation */
+.shop-link {
+  position: relative;
+  display: inline-block;
+  letter-spacing: 1px;
+  padding-bottom: 4px;
+}
+.shop-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 1px;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+.banner-card:hover .shop-link::after {
+  width: 100%;
+}
+
+.tracking-wide {
+  letter-spacing: 0.5px;
+}
+
+/* 05. WE LOVE — PRODUCT CARDS */
+/* Wrapper ảnh portrait 2:3 */
+.product-img-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.product-img-wrapper img {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.product-card:hover .product-img-wrapper img {
+  transform: scale(1.04);
+}
+.we-love-nav-next {
+  right: -15px;
+  left: auto !important;
+}
+
+/* 06. VIDEO BANNER */
+/* Layout */
+.hero-video-wrap {
+  position: relative;
+  height: 60vh;
+  min-height: 420px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 3rem; /* Bootstrap mb-5 ≈ 3rem, dùng CSS vì không dùng class mb-5 ngoài HTML */
+}
+.hero-video-wrap video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.32);
+  z-index: 1;
+}
+.hero-video-content {
+  position: relative;
+  z-index: 2;
+}
+.hero-video-content h1 {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Typography bên trong video banner */
+.hero-video-tag {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+}
+.hero-video-desc {
+  font-size: 0.85rem;
+}
+.hero-video-meta {
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+}
+.hero-video-divider {
+  width: 40px;
+  border-width: 2px;
+}
+
+/* Nút VIEW MORE — hiệu ứng mũi tên dùng utility .btn-arrow-anim (xem 07c) */
+.btn-hover-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Tăng specificity để đè Bootstrap .btn-light:hover hợp lệ */
+.btn.btn-light.btn-hover-arrow:hover {
+  background-color: #f8f9fa;
+  color: #000;
+  border-color: #f8f9fa;
+  gap: 10px;
+}
+
+/* 07. FEATURED PRODUCT */
+/* 07a. Image + Dots */
+.section-title {
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  font-size: 1.25rem;
+}
+.product-img-wrap {
+  background: #f4f4f4;
+  overflow: hidden;
+}
+.product-img-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.25s ease;
+}
+
+.img-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+}
+.img-dots .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d6d6d6;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  transition: background 0.2s ease;
+}
+.img-dots .dot.active {
+  background: #333;
+}
+
+/* 07b. Color & Size Selectors */
+.product-title-feat {
+  font-size: 1rem;
+  font-weight: 700;
+}
+.price-feat {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.star-icon {
+  font-size: 0.75rem;
+  color: #000;
+}
+
+.color-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.color-swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  transition: outline-offset 0.15s ease;
+}
+.color-swatch.active {
+  outline: 2px solid #999;
+  outline-offset: 2px;
+}
+.size-btn {
+  min-width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: #fff;
+  border: 1px solid #ddd;
+  color: #333;
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+.size-btn.active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+/* Hết hàng — min-width rộng hơn để chứa icon envelope */
+.size-btn.disabled-size {
+  min-width: 80px;
+  color: #ccc;
+  background: #f9f9f9;
+  border-color: #e5e5e5;
+  cursor: not-allowed;
+}
+.size-btn.disabled-size i {
+  color: #e5e5e5;
+}
+
+/* 07c. Action Buttons */
+/* Mũi tên ẩn ban đầu — khai báo 1 lần cho cả 2 nút */
+.btn-arrow-anim::after {
+  content: "\2192";
+  font-size: 20px;
+  line-height: 1;
+  opacity: 0;
+  max-width: 0;
+  transform: translateX(-10px);
+  transition:
+    opacity 0.25s ease,
+    max-width 0.25s ease,
+    transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.btn-arrow-anim:hover::after {
+  opacity: 1;
+  max-width: 20px;
+  transform: translateX(0);
+}
+
+/* ADD TO BAG */
+.btn.btn-add-bag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background-color: #e9e9e9;
+  color: #333;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border: none;
+  letter-spacing: 0.5px;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    gap 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.btn.btn-add-bag:hover {
+  background-color: #000;
+  color: #fff;
+  gap: 10px;
+}
+/* Override màu mũi tên (kế thừa .btn-arrow-anim) */
+.btn.btn-add-bag::after {
+  color: #fff;
+}
+
+/* PAYPAL */
+.btn-paypal {
+  background-color: #ffc439;
+  border: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease;
+}
+.btn-paypal:hover {
+  background-color: #f4b829;
+}
+
+/* 07d. Product Info */
+.size-chart-link {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  color: #333;
+  transition: color 0.2s ease;
+}
+.size-chart-link:hover {
+  color: #000;
+}
+
+.product-desc {
+  font-size: 0.75rem;
+  color: #666;
+  line-height: 1.8;
+}
+
+.product-features {
+  padding-left: 1.1rem;
+}
+.product-features li {
+  font-size: 0.7rem;
+  color: #666;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* 08. SHOP THE LOOKS */
+.shop-looks-section {
+  background-color: #f9f9f6;
+  padding: 80px 0;
+}
+
+.shop-looks-title {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #222;
+  font-size: 1.5rem;
+}
+.shop-looks-subtitle {
+  font-size: 0.85rem;
+  color: #666;
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Ảnh vuông 1:1 — không bị méo dù src bất kỳ tỉ lệ */
+.look-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+/* 09. FROM OUR BLOG */
+.from-blog-section {
+  background-color: #fff;
+  padding: 80px 0;
+}
+
+.blog-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #222;
+}
+.blog-card {
+  margin-bottom: 2rem;
+}
+.blog-img {
+  width: 100%;
+  aspect-ratio: 1 / 1.15;
+  object-fit: cover;
+  display: block;
+}
+
+/* Khối nội dung đè lên ảnh */
+.blog-content {
+  background-color: #fff;
+  position: relative;
+  z-index: 2;
+  margin-top: -3.5rem;
+  transition: margin-top 0.3s ease;
+}
+
+.blog-title {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #222;
+  margin-bottom: 12px;
+  padding-left: 20px;
+}
+.blog-desc {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  padding-left: 20px;
+}
+.blog-divider {
+  width: 40px;
+  border-top: 2px solid #222;
+  opacity: 1;
+  margin: 20px 0 15px 20px;
+}
+.blog-meta {
+  font-size: 11px;
+  font-weight: 500;
+  color: #888;
+  text-transform: uppercase;
+}
+.blog-meta i {
+  font-size: 12px;
+  margin-right: 4px;
+  color: #333;
+}
+
+/* 10. FOOTER — FEATURES BAR */
+.footer-features {
+  background-color: #fff;
+  border-top: 1px solid #eae8e4;
+  padding: 40px 0;
+}
+.feature-icon-lg {
+  font-size: 2.2rem;
+  color: #444;
+  margin-right: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.feature-text-box {
+  flex: 1;
+  line-height: 1.5;
+}
+.feature-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #333;
+}
+.feature-text {
+  font-size: 14px;
+  color: #777;
+}
+
+/* 11. FOOTER — MAIN  */
+.site-footer {
+  background-color: #efece7;
+  padding: 60px 0 40px;
+  margin-bottom: 2px;
+}
+
+.footer-logo {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #111;
+  margin-bottom: 16px;
+  display: block;
+}
+.footer-contact {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.8;
+}
+.footer-heading {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 22px;
+}
+
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Underline animation cho link */
+.footer-link {
+  color: #777;
+  text-decoration: none;
+  font-size: 14px;
+  position: relative;
+  display: inline-block;
+  transition: color 0.25s ease;
+}
+.footer-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1.5px;
+  background-color: #111;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.footer-link:hover {
+  color: #111;
+}
+.footer-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Newsletter — kế thừa hiệu ứng mũi tên từ .btn-arrow-anim */
+.newsletter-input {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-right: none;
+  border-radius: 0;
+  font-size: 13px;
+  font-family: "Jost", sans-serif;
+  padding: 10px 14px;
+  outline: none;
+}
+.btn-newsletter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background-color: #111;
+  color: #fff;
+  border: 1px solid #111;
+  padding: 10px 24px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: gap 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.btn-newsletter:hover {
+  gap: 8px;
+}
+
+/* Social icons */
+.social-icon {
+  color: #111;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.social-icon:hover {
+  color: #555;
+}
+
+/* 12. FOOTER — BOTTOM BAR */
+.bottom-bar {
+  background-color: #e8e5df;
+  border-top: 1px solid #ddd;
+  padding: 18px 0;
+  font-size: 13px;
+  color: #888;
+}
+.bottom-bar a {
+  color: #888;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.bottom-bar a:hover {
+  color: #333;
+}
+
+/* 13. RESPONSIVE */
+/* ── Desktop-only ── */
+@media (min-width: 992px) {
+  /* Denim grid: 7fr / 5fr, 2 hàng */
+  .denim-grid-container {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    grid-template-rows: repeat(2, 380px);
+    gap: 24px;
+  }
+  .card-tall {
+    grid-row: 1 / span 2;
+    height: 100%;
+  }
+  .card-short {
+    height: 100%;
+  }
+
+  /* Blog: đè lên ảnh + stagger cho cột 2 & 4 */
+  .blog-content {
+    width: 90%;
+    margin-left: 11%;
+    padding: 1.5rem 1.5rem 0 0;
+  }
+  .overlap-high .blog-content {
+    margin-top: -7.5rem;
+  }
+
+  /* We Love: nút điều hướng — tính theo phần trăm chiều rộng row */
+  .we-love-nav-prev {
+    left: 20% !important;
+  }
+  .we-love-nav-next {
+    left: 77.5% !important;
+    right: auto !important;
+  }
+}
+
+/* ── Mobile / Tablet ── */
+@media (max-width: 991.98px) {
+  /* Hero */
+  .fs-110 {
+    font-size: 58px;
+    line-height: 1;
+  }
+  .fs-38 {
+    font-size: 22px;
+  }
+  .ls-16 {
+    letter-spacing: 4px;
+  }
+  .hero-item {
+    height: 60vh;
+    min-height: 420px;
+  }
+  .hero-content {
+    left: 5%;
+  }
+
+  /* Denim — xếp dọc */
+  .denim-grid-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .card-tall,
+  .card-short {
+    height: 420px;
+  }
+  .card-content-box h3 {
+    font-size: 1.25rem !important;
+  }
+
+  /* Blog */
+  .blog-content {
+    width: 90%;
+    margin-left: 10%;
+    padding: 1.5rem 0 0 1.5rem;
+  }
+
+  /* Shop the Looks */
+  .shop-looks-section {
+    padding: 50px 0 60px;
+  }
+  .shop-looks-title {
+    font-size: 1.1rem;
+  }
+
+  /* Footer features — tăng khoảng cách giữa các row */
+  .footer-features {
+    padding: 30px 0;
+  }
+  .footer-features .row > [class*="col"] + [class*="col"] {
+    margin-top: 2rem;
+  }
+}
+/* ============================================================
+   SALEHUB — STYLESHEET
+   File   : public/css/style.css
+   Version: 3.0.0  (cleaned – no duplicates)
+
+   MỤC LỤC (Table of Contents)
+   ─────────────────────────────────────────────────────────
+   01. GLOBAL
+   02. UTILITY CLASSES
+   03. HERO CAROUSEL
+   04. DENIM COLLECTION
+   05. WE LOVE — PRODUCT CARDS
+   06. VIDEO BANNER
+   07. FEATURED PRODUCT
+       07a. Image + Dots
+       07b. Color & Size Selectors
+       07c. Action Buttons  ← utility .btn-arrow-anim dùng chung
+       07d. Product Info
+   08. SHOP THE LOOKS
+   09. FROM OUR BLOG
+   10. FOOTER — FEATURES BAR
+   11. FOOTER — MAIN  (newsletter + social)
+   12. FOOTER — BOTTOM BAR
+   13. RESPONSIVE  (tất cả @media gom vào đây)
+   ============================================================ */
